@@ -13,18 +13,11 @@
 use App\User;
 
 Route::get('/', function () {
-	
     return view('welcome');
 });
 
 Route::get('dashboard', function() {
-	$client = new GuzzleHttp\Client();
-	$user = User::first();
-	
-	$response = $client->get($user->repos_url)->getBody();
-	$repositories = json_decode($response);
-	return view('dashboard', ['repositories' => $repositories]);
-
+	return view('dashboard');
 })->middleware('auth');
 
 Route::get('auth/github', 'Auth\AuthController@redirectToProvider');

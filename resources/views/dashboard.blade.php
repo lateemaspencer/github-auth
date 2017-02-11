@@ -78,12 +78,24 @@
         <div class="flex-center position-ref full-height">
         <div class="content">
                 <div class="title m-b-md">
+
+            <img src="{{$user_avatar}}"/ >{{ $user_name }}
 			<hr />
 			List of Repos
 			<ul class="repository">
-			@foreach($repositories as $repository)
-			    <li><a href="https://github.com/{{ $repository->full_name }}"/>{{ $repository->full_name}}</a></li>
-			@endforeach 
+            @foreach($user_repos_issues as $repo)
+                <li>{{ $repo->name }}</li>
+                @if($repo->issue_list)
+                    <h4>Issues</h4>
+                        <ul>
+                        @foreach($repo->issue_list as $issue)
+                            <li><a href="{{$issue->url}}">{{ $issue->title }}</a></li> 
+                        @endforeach
+                        </ul>
+                    <hr />
+                @endif
+            @endforeach
+            
 			<li><a href="/logout">Logout</a></li>
 			</ul>
 			 </div>

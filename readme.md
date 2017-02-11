@@ -1,2 +1,2 @@
-Please visit http://54.89.244.201/ 
+Please visit http://localhost:8000/ 
 To authenticate with github
